@@ -115,7 +115,6 @@ public class Controller implements ActionListener{
         }
         
         else if(selected.equals("Eliminar motocicleta")){
-            ElectricMotorcycles moto = null;
             int id = Integer.parseInt(window.getIDField().getText());
             int question = JOptionPane.showInternalConfirmDialog(null,"Esta seguro?");
             if(question == 0){
