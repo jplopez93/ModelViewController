@@ -36,11 +36,10 @@ public class Controller implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent action){
         String res = "";
-        String command = action.getActionCommand();
         Object selected = window.getMenu().getSelectedItem();
         System.out.println(selected);
         
-        if(selected.equals("Mostrar todas las motocicletas")){  
+        if(selected.equals("Mostrar todas las motocicletas")){
             for(ElectricMotorcycles moto: motos.getMotorcycles()){
                         res += moto.toString();
             }
