@@ -9,6 +9,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.DriverManager;
 
+/**
+ *
+ * @author JUAN PABLO
+ */
 public class ConnectionDB {
     
     public static Connection getConnection(){

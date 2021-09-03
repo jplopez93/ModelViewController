@@ -111,8 +111,8 @@ public class Controller implements ActionListener{
             int autonomy = Integer.parseInt(window.getAutField().getText());
             int id = Integer.parseInt(window.getIDField().getText());
             moto = new ElectricMotorcycles(id,maker,price,autonomy,idSup);
-            motos.updateMotoName(moto);
-            motos.updateMotoPrice(moto);
+            motos.updateMoto(moto);
+            
         }
         
         else if(selected.equals("Eliminar motocicleta")){

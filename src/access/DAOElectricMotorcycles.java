@@ -17,6 +17,10 @@ import java.util.ArrayList;
 import util.ConnectionDB;
 import model.ElectricMotorcycles;
 
+/**
+ *
+ * @author JUAN PABLO
+ */
 public class DAOElectricMotorcycles {
     private Connection conn = null;
     
@@ -149,43 +153,25 @@ public class DAOElectricMotorcycles {
     }
     
     //Updates
-    public void updateMotoName(ElectricMotorcycles moto){
+    public void updateMoto(ElectricMotorcycles moto){
         try{
             if(conn == null){
                 conn = ConnectionDB.getConnection();
             }
             
-            String sql = "UPDATE motocicletas_electricas SET nom_fab=? where idmotocicleta=?;";
+            String sql = "UPDATE motocicletas_electricas SET nom_fab=?,precio=?,autonomia=? where idmotocicleta=?;";
             PreparedStatement command = conn.prepareStatement(sql);
             command.setString(1, moto.getProducerName());
-            command.setInt(2, moto.getId());
+            command.setInt(2, moto.getPrice());
+            command.setInt(3, moto.getAutonomy());
+            command.setInt(4, moto.getId());
             int updatedRows = command.executeUpdate();
             
             if(updatedRows > 0){
-                JOptionPane.showMessageDialog(null,"El nombre de la motocicleta se actualizó correctamente");
+                JOptionPane.showMessageDialog(null,"La motocicleta se actualizó correctamente");
             }
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Hubo un error al actualizar el nombre de la motocicleta");
-        }
-    }
-    
-    public void updateMotoPrice(ElectricMotorcycles moto){
-        try{
-            if(conn == null){
-                conn = ConnectionDB.getConnection();
-            }
-            
-            String sql = "UPDATE motocicletas_electricas SET precio=? where idmotocicleta=?;";
-            PreparedStatement command = conn.prepareStatement(sql);
-            command.setInt(1,moto.getPrice());
-            command.setInt(2, moto.getId());
-            int updatedRows = command.executeUpdate();
-            
-            if (updatedRows > 0){
-                JOptionPane.showMessageDialog(null, "El precio de la motocicleta se actualizó correctamente");
-            }
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Ha ocurrido un error al actualizar el precio de la motocicleta");
         }
     }
 }
